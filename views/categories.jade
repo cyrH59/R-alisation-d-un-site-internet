@@ -1,0 +1,27 @@
+extends layout
+block body
+    div.container-fluid.bg-secondary
+        div.row
+            div.col
+                div.header.bg-danger
+                    nav.d-flex.justify-content-beetween.align-items-center
+                          ul.nav.justify-content-end.bg-danger
+                            li.nav-item
+                                a.nav-link(href="/" class=!categoryActive ? "active" : "" class="link-dark" ) Acceuil
+                            
+                            img(src='https://upload.wikimedia.org/wikipedia/fr/thumb/5/58/Reddit_logo_new.svg/1200px-Reddit_logo_new.svg.png' style="width:80px; height:40px" )
+                         
+        div.row.mt-5
+            div.col
+              ul
+                each cat, index in categories
+                  li
+                    a(href="/category/" + cat.cat_id class="link-dark")=cat.cat_name
+                
+                
+        div.row.mt-5
+            div.col        
+                div.row
+                  form(action="/categories/create" method="GET")
+                    p=wtf
+                    input(type="Submit" value="Create a new categorie")
